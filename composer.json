@@ -20,6 +20,6 @@
         "phpunit/phpunit": ">=4.1"
     },
     "autoload": {
-        "psr-0": { "PivotalTracker\\": "lib/PivotalTracker" }
+        "psr-0": { "PivotalTracker\\": "lib/" }
     }
 }
