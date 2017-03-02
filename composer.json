@@ -5,6 +5,7 @@
     "homepage": "https://github.com/bariton3/php-pivotal-tracker-api",
     "keywords": ["pivotal tracker"],
     "license": "MIT",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Oleksandr Tatarchuk",
