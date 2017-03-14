@@ -2,7 +2,8 @@
 
 namespace PivotalTracker\Api;
 
-use PivotalTracker\Progect\Api\Memberships;
+use PivotalTracker\Api\Project\Memberships;
+use PivotalTracker\Api\Project\Webhooks;
 
 /**
  * Get all of a user's active projects, fetch the content of the specified project
@@ -78,6 +79,7 @@ class Project extends AbstractApi
         return $this->patch('/projects/'.rawurlencode($project_id), $values);
     }
 
+
     /**
      * Manage the project Memberships
      *
@@ -88,5 +90,18 @@ class Project extends AbstractApi
     public function memberships()
     {
         return new Memberships($this->client);
+    }
+
+
+    /**
+     * Manage the project Webhooks
+     *
+     * @link https://www.pivotaltracker.com/help/api/rest/v5#Project_Webhooks
+     *
+     * @return Webhooks
+     */
+    public function webhooks()
+    {
+        return new Webhooks($this->client);
     }
 }
