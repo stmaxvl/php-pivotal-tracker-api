@@ -1,6 +1,6 @@
 <?php
 
-namespace PivotalTracker\Progect\Api;
+namespace PivotalTracker\Api\Project;
 
 use PivotalTracker\Api\AbstractApi;
 
