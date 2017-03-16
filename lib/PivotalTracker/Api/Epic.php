@@ -2,6 +2,7 @@
 
 namespace PivotalTracker\Api;
 
+use PivotalTracker\Api\Epic\Comment;
 use PivotalTracker\Exception\MissingArgumentException;
 
 /**
@@ -93,5 +94,17 @@ class Epic extends AbstractApi
     public function remove($project_id, $id)
     {
         return $this->delete('/projects/'.rawurlencode($project_id).'/epics/'.rawurlencode($id));
+    }
+
+    /**
+     * List an epics comments.
+     *
+     * @link  https://www.pivotaltracker.com/help/api/rest/v5#Comments
+     *
+     * @return Comment
+     */
+    public function comments()
+    {
+        return new Comment($this->client);
     }
 }

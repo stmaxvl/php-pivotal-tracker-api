@@ -3,6 +3,7 @@
 namespace PivotalTracker\Api;
 
 use PivotalTracker\Api\Story\Task;
+use PivotalTracker\Api\Story\Comment;
 use PivotalTracker\Exception\MissingArgumentException;
 
 /**
@@ -106,5 +107,17 @@ class Story extends AbstractApi
     public function tasks()
     {
         return new Task($this->client);
+    }
+
+    /**
+     * List an issue comments.
+     *
+     * @link   https://www.pivotaltracker.com/help/api/rest/v5#Comments
+     *
+     * @return Comment
+     */
+    public function comments()
+    {
+        return new Comment($this->client);
     }
 }

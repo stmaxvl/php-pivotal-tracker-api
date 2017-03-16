@@ -1,8 +1,8 @@
 <?php
 
-namespace PivotalTracker\Api;
+namespace PivotalTracker\Api\Story;
 
-use PivotalTracker\Api\Story\Attachment;
+use PivotalTracker\Api\AbstractApi;
 
 /**
  * Listing, editing and delete your story's comments.
@@ -17,8 +17,8 @@ class Comment extends AbstractApi
      *
      * @link https://www.pivotaltracker.com/help/api/rest/v5#Stories
      *
-     * @param string $project_id   the id project
-     * @param string $story_id     the id story
+     * @param string $project_id   the project id
+     * @param string $story_id     the story id
      *
      * @return array the specified story's comments.
      */
@@ -28,18 +28,19 @@ class Comment extends AbstractApi
     }
 
     /**
-     * Get extended information about an story by project id.
+     * Get extended information about an comment by project and story id.
      *
      * @link https://www.pivotaltracker.com/help/api/rest/v5#projects_project_id_stories_story_id_get
      *
      * @param string $project_id   the ID of the project.
-     * @param string $id         the epic id
+     * @param string $story_id     the story id
+     * @param string $id           the comment id
      *
      * @return array information about the comment
      */
-    public function show($project_id, $id)
+    public function show($project_id, $story_id, $id)
     {
-        return $this->get('/projects/'.rawurlencode($project_id).'/stories/'.rawurlencode($id));
+        return $this->get('/projects/'.rawurlencode($project_id).'/stories/'.rawurlencode($story_id).'/comments/'.rawurlencode($id));
     }
 
     /**
@@ -48,8 +49,8 @@ class Comment extends AbstractApi
      * @link https://www.pivotaltracker.com/help/api/rest/v5#projects_project_id_stories_story_id_comments_post
      *
      * @param string $project_id   the ID of the project.
-     * @param string $story_id     the id story
-     * @param array  $params     the new story data
+     * @param string $story_id     the story id
+     * @param array  $params     the new comment data
      *
      *
      * @return array information about the comment
@@ -60,12 +61,12 @@ class Comment extends AbstractApi
     }
 
     /**
-     * Update existence epic by id.
+     * Update existence comment by id.
      *
      * @link https://www.pivotaltracker.com/help/api/rest/v5#projects_project_id_epics_epic_id_put
      *
      * @param string $project_id the id of the project
-     * @param string $story_id   the id story
+     * @param string $story_id   the story id
      * @param string $id         the comment id
      * @param array  $params     key=>value user attributes to update.
      *                           key can be text or etc
@@ -83,7 +84,7 @@ class Comment extends AbstractApi
      * @link https://www.pivotaltracker.com/help/api/rest/v5#projects_project_id_stories_story_id_comments_comment_id_delete
      *
      * @param string $project_id the id of the project
-     * @param string $story_id   the id story
+     * @param string $story_id   the story id
      * @param string $id         the comment id
      *
      * @return mixed null on success, array on error with 'error'
