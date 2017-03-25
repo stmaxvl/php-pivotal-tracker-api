@@ -110,8 +110,9 @@ class ResultPager implements ResultPagerInterface
     {
         $current = $this->pagination['offset'] + $this->pagination['limit'];
         $offset = $current > $this->pagination['total'] ? $this->pagination['total'] : $current;
-
-        $result = $this->callApi($api, $method, array_merge($parameters, [['offset' => $offset, 'limit' => $api->getLimit()]]));
+        
+        if(isset($parameters[1])) $parameters[1] = array_merge($parameters[1], ['offset' => $offset, 'limit' => $api->getLimit()]);
+        $result = $this->callApi($api, $method, $parameters);
         $this->postFetch();
 
         return $result;
@@ -132,7 +133,9 @@ class ResultPager implements ResultPagerInterface
     {
         $current = $this->pagination['offset'] - $this->pagination['limit'];
         $offset = $current >= 0 ? : 0;
-        $result = $this->callApi($api, $method, array_merge($parameters, [['offset' => $offset, 'limit' => $api->getLimit()]]));
+        
+        if(isset($parameters[1])) $parameters[1] = array_merge($parameters[1], ['offset' => $offset, 'limit' => $api->getLimit()]);
+        $result = $this->callApi($api, $method, $parameters);
         $this->postFetch();
 
         return $result;
