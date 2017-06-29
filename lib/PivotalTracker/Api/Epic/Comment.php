@@ -19,12 +19,13 @@ class Comment extends AbstractApi
      *
      * @param string $project_id  the project id
      * @param string $epic_id     the epic id
+     * @param array $params     the additional parameters like file_attachments, ..., filter
      *
      * @return array the specified epics comments.
      */
-    public function all($project_id, $epic_id)
+    public function all($project_id, $epic_id, array $params = array())
     {
-        return $this->get('/projects/'.rawurlencode($project_id).'/epics/'.rawurlencode($epic_id).'/comments');
+        return $this->get('/projects/'.rawurlencode($project_id).'/epics/'.rawurlencode($epic_id).'/comments' , $params);
     }
 
     /**
