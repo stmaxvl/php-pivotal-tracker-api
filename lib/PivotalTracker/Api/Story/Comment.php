@@ -12,25 +12,26 @@ use PivotalTracker\Api\AbstractApi;
  */
 class Comment extends AbstractApi
 {
-    /**
+   /**
      * List story's comments.
      *
-     * @link https://www.pivotaltracker.com/help/api/rest/v5#Stories
+     * @link https://www.pivotaltracker.com/help/api/rest/v5#Comments
      *
      * @param string $project_id   the project id
      * @param string $story_id     the story id
+     * @param array $params     the additional parameters like file_attachments, ..., filter
      *
      * @return array the specified story's comments.
      */
-    public function all($project_id, $story_id)
+    public function all($project_id, $story_id, array $params = array())
     {
-        return $this->get('/projects/'.rawurlencode($project_id).'/stories/'.rawurlencode($story_id).'/comments');
+        return $this->get('/projects/'.rawurlencode($project_id).'/stories/'.rawurlencode($story_id).'/comments', $params);
     }
 
     /**
      * Get extended information about an comment by project and story id.
      *
-     * @link https://www.pivotaltracker.com/help/api/rest/v5#projects_project_id_stories_story_id_get
+     * @link https://www.pivotaltracker.com/help/api/rest/v5#projects_project_id_stories_story_id_comments_comment_id_get
      *
      * @param string $project_id   the ID of the project.
      * @param string $story_id     the story id
@@ -63,7 +64,7 @@ class Comment extends AbstractApi
     /**
      * Update existence comment by id.
      *
-     * @link https://www.pivotaltracker.com/help/api/rest/v5#projects_project_id_epics_epic_id_put
+     * @link https://www.pivotaltracker.com/help/api/rest/v5#projects_project_id_stories_story_id_comments_comment_id_put
      *
      * @param string $project_id the id of the project
      * @param string $story_id   the story id
@@ -77,7 +78,7 @@ class Comment extends AbstractApi
     {
         return $this->put('/projects/'.rawurlencode($project_id).'/stories/'.rawurlencode($story_id).'/comments/'.rawurlencode($id), $params);
     }
-
+    
     /**
      * Delete a comment.
      *
