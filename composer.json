@@ -2,7 +2,7 @@
     "name": "stmaxvl/php-pivotal-tracker-api",
     "type": "library",
     "description": "Pivotal Tracker API v5 client",
-    "homepage": "https://github.com/bariton3/php-pivotal-tracker-api",
+    "homepage": "https://github.com/stmaxvl/php-pivotal-tracker-api",
     "keywords": ["pivotal tracker"],
     "license": "MIT",
     "minimum-stability": "dev",
