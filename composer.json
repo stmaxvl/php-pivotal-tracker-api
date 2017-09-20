@@ -1,5 +1,5 @@
 {
-    "name": "bariton3/php-pivotal-tracker-api",
+    "name": "stmaxvl/php-pivotal-tracker-api",
     "type": "library",
     "description": "Pivotal Tracker API v5 client",
     "homepage": "https://github.com/bariton3/php-pivotal-tracker-api",
